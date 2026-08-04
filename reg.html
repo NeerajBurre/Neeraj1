@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <style>
+        body {
+            font-family: Arial,sans-serif;
+            background-color: lavender;
+            padding: 30px;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .form-box {
+            background-color: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid purple;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        h2 {
+            text-align: center;
+            color: darkpurple;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .field {
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+            color: darkslategray;
+            font-size: 14px;
+        }
+        input, select {
+            width: 100%;
+            padding: 9px;
+            box-sizing: border-box;
+            border: 1.5px solid lightgray;
+            border-radius: 6px;
+            outline: none;
+        }
+        /* Highlight input borders when clicked */
+        input:focus, select:focus {
+            border-color: purple;
+        }
+        /* Buttons side by side with flexbox */
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            flex: 1;
+            padding: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: green;
+        }
+        .btn-submit:hover {
+            background-color: darkgreen;
+        }
+        .btn-reset {
+            background-color: red;
+        }
+        .btn-reset:hover {
+            background-color: darkred;
+        }
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: darkgreen;
+            background-color: lightgreen;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            display: none; /* Hidden until form is submitted */
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-box">
+    <h2>Event Registration</h2>
+    
+    <form id="regForm" onsubmit="return validateAndSubmit(event)">
+        <div class="field">
+            <label>Roll Number:</label>
+            <input type="text" id="rollNo">
+        </div>
+
+        <div class="field">
+            <label>First Name:</label>
+            <input type="text" id="firstName">
+        </div>
+
+        <div class="field">
+            <label>Last Name:</label>
+            <input type="text" id="lastName">
+        </div>
+
+        <div class="field">
+            <label>Email ID:</label>
+            <input type="email" id="email">
+        </div>
+
+        <div class="field">
+            <label>Department:</label>
+            <select id="department">
+                <option value="">-- Select --</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Phone Number:</label>
+            <input type="tel" id="phone">
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="btn-submit">Submit</button>
+            <button type="reset" class="btn-reset" onclick="clearMessage()">Reset</button>
+        </div>
+    </form>
+
+    <div id="message"></div>
+</div>
+
+<script>
+function validateAndSubmit(event) {
+    event.preventDefault();
+
+    let rollNo = document.getElementById("rollNo").value.trim();
+    let firstName = document.getElementById("firstName").value.trim();
+    let lastName = document.getElementById("lastName").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let department = document.getElementById("department").value;
+    let phone = document.getElementById("phone").value.trim();
+
+    if (rollNo === "") {
+        alert("Please enter your Roll Number.");
+        return false;
+    }
+    if (firstName === "") {
+        alert("Please enter your First Name.");
+        return false;
+    }
+    if (lastName === "") {
+        alert("Please enter your Last Name.");
+        return false;
+    }
+    if (email === "" || !email.includes("@")) {
+        alert("Please enter a valid Email ID.");
+        return false;
+    }
+    if (department === "") {
+        alert("Please select a Department.");
+        return false;
+    }
+    if (phone.length !== 10 || isNaN(phone)) {
+        alert("Please enter a valid 10-digit Phone Number.");
+        return false;
+    }
+
+    // Display formatted success banner
+    let msgDiv = document.getElementById("message");
+    msgDiv.innerText = "Thank you " + firstName + " " + lastName + " for registration!";
+    msgDiv.style.display = "block";
+    return true;
+}
+
+function clearMessage() {
+    let msgDiv = document.getElementById("message");
+    msgDiv.innerText = "";
+    msgDiv.style.display = "none";
+}
+</script>
+
+</body>
+</html>
