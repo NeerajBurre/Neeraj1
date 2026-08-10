@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Registration</title>
+    <title>Student Registration form</title>
     <style>
         body {
             font-family: Arial,sans-serif;
@@ -129,7 +129,12 @@
             <label>Phone Number:</label>
             <input type="tel" id="phone">
         </div>
-
+        
+        <div class="field">
+             <label>Alternate Phone Number: </label>
+             <input type="tel" id="altphone">
+         </div>
+        
         <div class="buttons">
             <button type="submit" class="btn-submit">Submit</button>
             <button type="reset" class="btn-reset" onclick="clearMessage()">Reset</button>
@@ -149,6 +154,7 @@ function validateAndSubmit(event) {
     let email = document.getElementById("email").value.trim();
     let department = document.getElementById("department").value;
     let phone = document.getElementById("phone").value.trim();
+    let altPhone = document.getElementById("altPhone").value.trim();
 
     if (rollNo === "") {
         alert("Please enter your Roll Number.");
@@ -158,6 +164,7 @@ function validateAndSubmit(event) {
         alert("Please enter your First Name.");
         return false;
     }
+
     if (lastName === "") {
         alert("Please enter your Last Name.");
         return false;
@@ -174,7 +181,10 @@ function validateAndSubmit(event) {
         alert("Please enter a valid 10-digit Phone Number.");
         return false;
     }
-
+    if (altPhone !== "" && (altPhone.length !== 10 || isNaN(altPhone))) {
+        alert("Please enter a valid 10-digit Alternate Phone Number.");
+        return false;
+    }
     // Display formatted success banner
     let msgDiv = document.getElementById("message");
     msgDiv.innerText = "Thank you " + firstName + " " + lastName + " for registration!";
