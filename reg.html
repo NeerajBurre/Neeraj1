@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+HEAD
     <title>Student Registration form</title>
+    <title>Student Registration</title>
+ 1ccff7972e9d479faabf2eea8a1b44481ee11ad9
     <style>
         body {
             font-family: Arial,sans-serif;
@@ -129,12 +132,16 @@
             <label>Phone Number:</label>
             <input type="tel" id="phone">
         </div>
+<<<<<<< HEAD
         
         <div class="field">
              <label>Alternate Phone Number: </label>
              <input type="tel" id="altphone">
          </div>
         
+=======
+
+>>>>>>> 1ccff7972e9d479faabf2eea8a1b44481ee11ad9
         <div class="buttons">
             <button type="submit" class="btn-submit">Submit</button>
             <button type="reset" class="btn-reset" onclick="clearMessage()">Reset</button>
@@ -154,7 +161,10 @@ function validateAndSubmit(event) {
     let email = document.getElementById("email").value.trim();
     let department = document.getElementById("department").value;
     let phone = document.getElementById("phone").value.trim();
+<<<<<<< HEAD
     let altPhone = document.getElementById("altPhone").value.trim();
+=======
+>>>>>>> 1ccff7972e9d479faabf2eea8a1b44481ee11ad9
 
     if (rollNo === "") {
         alert("Please enter your Roll Number.");
@@ -164,7 +174,10 @@ function validateAndSubmit(event) {
         alert("Please enter your First Name.");
         return false;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ccff7972e9d479faabf2eea8a1b44481ee11ad9
     if (lastName === "") {
         alert("Please enter your Last Name.");
         return false;
@@ -181,10 +194,14 @@ function validateAndSubmit(event) {
         alert("Please enter a valid 10-digit Phone Number.");
         return false;
     }
+<<<<<<< HEAD
     if (altPhone !== "" && (altPhone.length !== 10 || isNaN(altPhone))) {
         alert("Please enter a valid 10-digit Alternate Phone Number.");
         return false;
     }
+=======
+
+>>>>>>> 1ccff7972e9d479faabf2eea8a1b44481ee11ad9
     // Display formatted success banner
     let msgDiv = document.getElementById("message");
     msgDiv.innerText = "Thank you " + firstName + " " + lastName + " for registration!";
@@ -200,4 +217,8 @@ function clearMessage() {
 </script>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 1ccff7972e9d479faabf2eea8a1b44481ee11ad9
